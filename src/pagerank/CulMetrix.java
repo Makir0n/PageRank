@@ -16,11 +16,10 @@ public class CulMetrix {
 
     int row, column;
 
-    // 疎行列はこの全部ゼロな行列でしか初期化できない模様（使い方からして当然だけど）
+    // 疎行列は全部ゼロな行列で初期化される
     SparseMatrix sm;
     SparseMatrix st;
 
-    //double[] pageValue = {1, 1, 1, 1, 1};
     ArrayList<Double> pageValue = new ArrayList<>();
 
     CulMetrix(ArrayList<Integer> tos, ArrayList<Integer> froms, int size) {
@@ -28,11 +27,8 @@ public class CulMetrix {
         sm = SparseMatrix.factory.zeros(row, column);
         st = SparseMatrix.factory.zeros(row, column);
         for (int i = 0; i < tos.size(); i++) {
-            //System.out.print(tos.get(i));
-            //System.out.println(froms.get(i));
             sm.setAsInt(1, froms.get(i), tos.get(i));
         }
-        //sm.showGUI();
         // 転置後の行列
         // 非ゼロ要素のみ座標をイテレータで転置位置にセット
         for (long[] cd : sm.availableCoordinates()) {
@@ -41,7 +37,6 @@ public class CulMetrix {
         for (int i = 0; i < size; i++) {
             pageValue.add(1.0);
         }
-        //st.showGUI();
         for (int y = 0; y < pageValue.size(); y++) {//列
             int[] arrayNum = new int[pageValue.size()];//各列の要素数
             //ある列の0でない要素の数を数える
@@ -59,12 +54,9 @@ public class CulMetrix {
                 double a = 1 / (double) num;
                 for (int i = 0; i < num; i++) {
                     st.setAsDouble(a, arrayNum[i], y);///列は固定で
-                    //st.showGUI();
-                    //System.out.println(st.getAsInt(3, 0));
                 }
             }
         }
-//st.showGUI();
         for (int i = 0; i < 1000; i++) {
             for (int x = 0; x < pageValue.size(); x++) {//列
                 //ランダムサーファーモデルにのっとりGoogleの採用している0.85
@@ -76,9 +68,7 @@ public class CulMetrix {
                     //System.out.print(element);
                 }
                 pageValue.set(x,(1 - d) + d * sum);
-                //System.out.println(x + "," + pageValue.get(x) + "/");
             }
-            //System.out.print("\n");
         }
 
     }

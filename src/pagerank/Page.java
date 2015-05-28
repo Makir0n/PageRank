@@ -38,6 +38,5 @@ class Page {
     @Override
     public String toString() {
         return getPageIndex()+ ":" + getValue();
-        //return String.valueOf(getId());
     }
 }

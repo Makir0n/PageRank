@@ -18,34 +18,19 @@ public class Sort {
 
     ArrayList<Page> lst;
 
-    //idが数字でない可能性とか
-    //Sort(int edge_num, ArrayList<Double> values) {
 Sort(ArrayList<Double> values) {
         lst = new ArrayList<Page>();
 
-        //page_id??
-        
         for (int i = 0; i < values.size(); i++) {
-            //System.out.println(values.get(i));
-            //compareがintじゃないとダメっぽいので1000かけて大きく
+            //compareがintじゃないと比較できないので1000かけて大きく
             lst.add(new Page(i, values.get(i) * 1000));
         }
-        /*
-         lst.add(new Page("page1", 34));
-         lst.add(new Page("page2", 13));
-         lst.add(new Page("page3", 18));
-         */
-        //System.out.println(lst);
-
         Collections.sort(lst, new PageComparator());
-
-        //System.out.println(lst);
     }
 
     ArrayList<Page> getBestID() {
         return lst;
     }
-
 }
 
 class PageComparator implements Comparator {

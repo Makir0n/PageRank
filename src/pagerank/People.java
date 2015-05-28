@@ -5,10 +5,6 @@
  */
 package pagerank;
 
-/**
- *
- * @author makir0n
- */
 public class People {
 
     private int id;
@@ -35,7 +31,6 @@ public class People {
 
     public String toString() {
         return getId() + ":" + getName() + ":" + getScore();
-        //return getName();
     }
 
 }

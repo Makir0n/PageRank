@@ -20,17 +20,7 @@ public class SortPeople {
     public SortPeople(ArrayList<People> list) {
 
         sortPeople = list;
-
-        //page_id??
-        //for (int i = 0; i < sortPeople.size(); i++) {
-            //compareがintじゃないとダメっぽいので1000かけて大きく
-            //People(int i, String n ,double score)
-            //sortPeople.add(new People(i, list.get(i).getName(),list.get(i).getScore() * 1000));
-        //}
-        //        Collections.sort(lst, new PageComparator());
         Collections.sort(list, new PeopleComparator());
-
-        //System.out.println(sortPeople);
     }
 
     ArrayList<People> getSortedPeople() {
