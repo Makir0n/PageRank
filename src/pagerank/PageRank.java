@@ -19,9 +19,9 @@ public class PageRank {
         ArrayList<Integer> tosID = new ArrayList<Integer>();
         ArrayList<Integer> fromsID = new ArrayList<Integer>();
 
-        String jdbc_url = "jdbc:mysql://localhost/LINEtest";
-        String user = "root";
-        String password = "@xes";
+        String jdbc_url = "jdbc:mysql://localhost/DBname";
+        String user = "name";
+        String password = "pass";
         ResultSet rsLink;
         
         try (Connection con = DriverManager.getConnection(jdbc_url, user, password);
